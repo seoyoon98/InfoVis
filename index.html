@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Books Interactive Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📚 Books Interactive Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab1">🔗 Genre Association</button>
+      <button class="tab-btn" data-tab="tab2">🔍 Book Finder</button>
+      <button class="tab-btn" data-tab="tab3">📈 Rating Factors</button>
+    </div>
+
+    <main>
+      <div id="tab1" class="tab-content active">
+        <div id="genre-association"></div>
+      </div>
+
+      <div id="tab2" class="tab-content">
+        <div id="book-finder"></div>
+      </div>
+
+      <div id="tab3" class="tab-content">
+        <div id="rating-factors"></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(div => div.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
